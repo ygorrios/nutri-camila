@@ -1,0 +1,2 @@
+export const InputDefaultClass =
+  'sm:text-sm block w-full appearance-none rounded-md border px-3 py-2 placeholder-gray-400 shadow-sm focus:border-company-highlightText-dark focus:outline-none focus:ring-company-highlightTextHover-dark border-inputs-borderColor-light dark:border-inputs-borderColor-dark bg-inputs-background-light dark:bg-inputs-background-dark text-company-primaryText-light text-company-primaryText-dark'

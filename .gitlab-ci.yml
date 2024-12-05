@@ -1,0 +1,40 @@
+image: ruby:2.6 # Correct image version
+
+stages:
+  - print
+
+print_job:
+  stage: print
+  script:
+    - echo "Acre Intranet pipeline!"
+# stages:
+#   - setup_build_push
+
+# variables:
+#   AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+#   AWS_ECR_REPOSITORY_NAME: $AWS_ECR_REPOSITORY_NAME
+#   AWS_ACCOUNT_ID: $AWS_ACCOUNT_ID
+#   DOCKER_HOST: tcp://docker:2375/
+#   DOCKER_TLS_CERTDIR: ""
+
+# setup_build_push_job:
+#   stage: setup_build_push
+#   image: docker:20-git
+#   only:
+#     - master
+#   services:
+#     - docker:dind
+#   before_script:
+#     - mkdir ~/.aws/ && touch ~/.aws/credentials
+#     - echo "[default]" >> ~/.aws/credentials
+#     - echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/credentials
+#     - echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+#   script:
+#     - apk add --no-cache curl jq python3 py3-pip
+#     - pip install awscli
+#     - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+#     - TAG="01.00.001-$(date +%Y%m%d)-$(git log -1 --format=%h)"
+#     - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AWS_ECR_REPOSITORY_NAME:$TAG .
+#     - docker tag $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AWS_ECR_REPOSITORY_NAME:$TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AWS_ECR_REPOSITORY_NAME:latest
+#     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AWS_ECR_REPOSITORY_NAME:$TAG
+#     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$AWS_ECR_REPOSITORY_NAME:latest

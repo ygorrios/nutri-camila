@@ -1,0 +1,18 @@
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+  // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    "dbaeumer.vscode-eslint", //ESLINT (verify syntax based on the rules)
+    "esbenp.prettier-vscode", //PRETTIER (format code)
+    "ambar.bundle-size", //BUNDLE SIZE (show package size beside the import)
+    "streetsidesoftware.code-spell-checker", //SPELL CHECKER (verify each word to prevent typo mistakes)
+    "naumovs.color-highlight", //HIGHLIGHT (it shows the HEX color in real time)
+    "eamodio.gitlens", //GITLENS (show each line change history)
+    "EthanSK.restore-terminals", //RESTORE TERMINALS (for react/node applications, to automatically open the console and run npm start)
+    "hektorw.create-react-folder-component" //CREATE REACT COMPONENTS FOLDER STRUCTURE
+  ],
+  // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+  "unwantedRecommendations": []
+}
