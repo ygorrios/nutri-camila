@@ -24,8 +24,3 @@
    5.1. Windows: [Download and Install](https://awscli.amazonaws.com/AWSCLIV2.msi)
    5.2. Linux: [Download and Install](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 6. Type `aws configure` to add your key from AWS (if you don't have yet ask any DBA)
-7. Ask any DBA to allow your ip on acre-intranet security groups
-8. Install JAVA 8: [jdk-8u202-windows-x64.zip](https://drive.google.com/file/d/1rDxEcWLok9mejjSk-6klQ069GTDSudgm/view?usp=drive_link)
-9. Install SenchaCMD: [SenchaCmd-7.7.0.36-windows-64bit.zip](https://drive.google.com/file/d/1Czf23WsPXlKfkPkwiamWBhfJTHQzG8z6/view?usp=drive_link)
-10. Install SQL Developer: [sqldeveloper-23.1.zip](https://drive.google.com/file/d/1ZOc25TALaoZjSKUUc5TFah7FjxG_HI0w/view?usp=drive_link)
-11. Run this command: `cd c/www/acre-intranet && pnpm prod`

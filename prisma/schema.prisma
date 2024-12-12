@@ -6,154 +6,123 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearchPostgres"]
 }
 
 datasource db {
-  provider     = "postgresql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Course {
-  id           String  @id @default(uuid())
-  instructorId String
-  title        String  @db.Text
-  subtitle     String? @db.Text
-  description  String? @db.Text
-  imageUrl     String? @db.Text
-  price        Float?
-  isPublished  Boolean @default(false)
+  id String @id @default(uuid())
+  userId String
+  title String @db.Text
+  description String? @db.Text
+  imageUrl String? @db.Text
+  price Float?
+  isPublished Boolean @default(false)
 
-  categoryId String
-  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  category Category? @relation(fields: [categoryId], references: [id])
 
-  subCategoryId String
-  subCategory   SubCategory @relation(fields: [subCategoryId], references: [id])
-
-  levelId String?
-  level   Level?  @relation(fields: [levelId], references: [id])
-
-  sections Section[]
-
+  chapters Chapter[]
+  attachments Attachment[]
   purchases Purchase[]
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([categoryId])
-  @@index([subCategoryId])
-  @@index([levelId])
+  // @@fulltext([title])
 }
 
 model Category {
-  id            String        @id @default(uuid())
-  name          String        @unique
-  subCategories SubCategory[]
-  courses       Course[]
+  id String @id @default(uuid())
+  name String @unique
+  courses Course[]
 }
 
-model SubCategory {
-  id   String @id @default(uuid())
+model Attachment {
+  id String @id @default(uuid())
   name String
-
-  categoryId String
-  category   Category @relation(fields: [categoryId], references: [id])
-
-  courses Course[]
-
-  @@index([categoryId])
-}
-
-model Level {
-  id      String   @id @default(uuid())
-  name    String   @unique
-  courses Course[]
-}
-
-model Section {
-  id          String  @id @default(uuid())
-  title       String
-  description String? @db.Text
-  videoUrl    String? @db.Text
-  position    Int
-  isPublished Boolean @default(false)
-  isFree      Boolean @default(false)
+  url String @db.Text
 
   courseId String
-  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([courseId])
+}
+
+model Chapter {
+  id String @id @default(uuid())
+  title String
+  description String? @db.Text
+  videoUrl String? @db.Text
+  position Int
+  isPublished Boolean @default(false)
+  isFree Boolean @default(false)
 
   muxData MuxData?
 
-  resources Resource[]
+  courseId String
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
-  progress Progress[]
+  userProgress UserProgress[]
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([courseId])
 }
 
 model MuxData {
-  id         String  @id @default(uuid())
-  assetId    String
+  id String @id @default(uuid())
+  assetId String
   playbackId String?
 
-  sectionId String  @unique
-  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
-
-  @@index([sectionId])
+  chapterId String @unique
+  chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
 }
 
-model Resource {
-  id      String @id @default(uuid())
-  name    String
-  fileUrl String
+model UserProgress {
+  id String @id @default(uuid())
+  userId String
 
-  sectionId String
-  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-
-  @@index([sectionId])
-}
-
-model Progress {
-  id        String @id @default(uuid())
-  studentId String 
-
-  sectionId String
-  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  chapterId String
+  chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
 
   isCompleted Boolean @default(false)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  @@index([sectionId])
-  @@unique([studentId, sectionId])
+  @@index([chapterId])
+  @@unique([userId, chapterId])
 }
 
 model Purchase {
-  id         String @id @default(uuid())
-  customerId String 
+  id String @id @default(uuid())
+  userId String
 
   courseId String
-  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
 
+  @@unique([userId, courseId])
   @@index([courseId])
-  @@unique([customerId, courseId])
 }
 
 model StripeCustomer {
-  id               String @id @default(uuid())
-  customerId       String @unique
+  id String @id @default(uuid())
+  userId String @unique
   stripeCustomerId String @unique
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

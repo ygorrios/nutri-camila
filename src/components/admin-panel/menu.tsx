@@ -2,7 +2,7 @@
 
 // import { useUser } from '@clerk/nextjs'
 import { Ellipsis } from 'lucide-react'
-import { useSession } from 'next-auth/react'
+// import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -19,7 +19,8 @@ interface MenuProps {
 
 const Menu = ({ isOpen }: MenuProps) => {
   const pathname = usePathname()
-  const { data: session } = useSession()
+  const session = {}
+  // const { data: session } = useSession()
   // const { user }: any = useUser()
   const menuList = getMenuList(pathname)
   return (

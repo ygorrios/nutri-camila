@@ -19,6 +19,7 @@ const Logo = ({ className, alt, width, smallLogo }: ILogoProps) => {
       alt={alt || 'Logo'}
       className={className}
       loading='lazy'
+      
     />
   )
 }

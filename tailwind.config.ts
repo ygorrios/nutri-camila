@@ -90,7 +90,7 @@ const config = {
       pattern: /text-(gray|red|yellow|green|blue|indigo|purple|pink)-(300|400|500|600|700|800|900)/,
     },
   ],
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/forms')],
+  plugins: [require('tailwindcss-animate')],
 } satisfies Config
 
 export default config

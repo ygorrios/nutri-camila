@@ -18,8 +18,8 @@ const SheetMenu = async () => {
         <SheetTitle></SheetTitle>
         <SheetHeader>
           <Button className='flex justify-center items-center' variant='link' asChild>
-            <Link href='/dashboard' className='flex items-center gap-2'>
-              <Logo />
+            <Link href='/app/' className='flex items-center gap-2'>
+              <Logo width={80} />
             </Link>
           </Button>
         </SheetHeader>

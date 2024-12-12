@@ -17,14 +17,14 @@ const Sidebar = () => {
         'fixed top-0 left-0 z-20 h-screen -translate-x-full lg:translate-x-0 transition-[width] ease-in-out duration-300 w-72',
       )}
     >
-      <div className='relative h-full flex flex-col px-3 py-4 overflow-y-auto shadow-md dark:shadow-zinc-800'>
-        <Link href='/' className='flex gap-2 justify-center mb-2'>
+      <div className='relative flex flex-col px-3 py-4 overflow-y-auto shadow-md'>
+        <Link href='/app/' className='flex gap-2 justify-center mb-2'>
           <div
             className={cn(
               'flex font-bold text-lg whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300 translate-x-0 opacity-100 py-2',
             )}
           >
-            <Logo />
+            <Logo width={100} />
           </div>
         </Link>
         <Menu isOpen={sidebar?.isOpen} />

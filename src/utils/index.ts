@@ -41,7 +41,7 @@ export const getUsernameFromEmail = (email?: string) => {
   if (!email) {
     return null
   }
-  const username = email.match(/^([^@]*)@/)
+  const username = email.match(/^([^@]*)src/)
   if (!username || !username[1]) {
     return null
   }

@@ -1,7 +1,7 @@
 'use server'
 
 import { getEnvironment } from 'src/model/branchOpenerModel'
-import { getCurrentUser } from '../core/auth'
+import { getCurrentUser } from '../get-current-user'
 
 export const getEnvs = async () => {
   const user = await getCurrentUser()
