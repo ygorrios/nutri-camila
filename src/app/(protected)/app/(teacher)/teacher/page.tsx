@@ -1,6 +1,7 @@
 import { auth } from '@clerk/nextjs/server'
 import { NextPage } from 'next'
 import { redirect } from 'next/navigation'
+import PlaceholderContent from 'src/components/default-page'
 import { db } from 'src/lib/db'
 import { columns } from './courses/_components/columns'
 import { DataTable } from './courses/_components/data-table'
@@ -19,9 +20,9 @@ const CoursesPage: NextPage<Props> = async ({}) => {
     },
   })
   return (
-    <div className='p-6'>
+    <PlaceholderContent>
       <DataTable columns={columns} data={courses} />
-    </div>
+    </PlaceholderContent>
   )
 }
 

@@ -3,6 +3,7 @@ import { CircleDollarSign, File, LayoutDashboard, ListChecks } from 'lucide-reac
 import { NextPage } from 'next'
 import { redirect } from 'next/navigation'
 import { Banner } from 'src/components/banner'
+import PlaceholderContent from 'src/components/default-page'
 import { IconBadge } from 'src/components/icon-badge'
 import { db } from 'src/lib/db'
 import Actions from './_components/actions'
@@ -67,7 +68,7 @@ const CourseIdPage: NextPage<Props> = async ({ params }) => {
   const isCompleted = requiredFields.every(Boolean)
 
   return (
-    <>
+    <PlaceholderContent pathBack='/app/teacher/courses'>
       {!course.isPublished && (
         <Banner label='Esse curso não foi publicado. Ele não aparecerá para os estudantes' variant='warning' />
       )}
@@ -124,7 +125,7 @@ const CourseIdPage: NextPage<Props> = async ({ params }) => {
           </div>
         </div>
       </div>
-    </>
+    </PlaceholderContent>
   )
 }
 

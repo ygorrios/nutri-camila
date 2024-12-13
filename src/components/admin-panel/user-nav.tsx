@@ -1,6 +1,7 @@
 'use client'
 
 // import { useClerk } from '@clerk/nextjs'
+import { useClerk } from '@clerk/nextjs'
 import { Avatar, AvatarFallback, AvatarImage } from 'src/components/ui/avatar'
 import { Button } from 'src/components/ui/button'
 import {
@@ -16,8 +17,7 @@ import { getInitials } from 'src/utils'
 import { SignOutClient } from './auth-components-client'
 
 const UserNav = () => {
-  // const { user } = useClerk()
-  const user = {}
+  const { user } = useClerk()
   return (
     <DropdownMenu>
       <TooltipProvider disableHoverableContent>
@@ -39,7 +39,7 @@ const UserNav = () => {
         <DropdownMenuLabel className='font-normal'>
           <div className='flex flex-col space-y-1'>
             <p className='text-sm font-medium leading-none'>{user?.firstName || ''}</p>
-            <p className='text-xs leading-none text-muted-foreground'>{user?.primaryEmailAddress || ''}</p>
+            <p className='text-xs leading-none text-muted-foreground'>{user?.emailAddresses?.[0]?.emailAddress || ''}</p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

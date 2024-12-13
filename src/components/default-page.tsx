@@ -24,13 +24,9 @@ const PlaceholderContent = ({ children, pathBack }: PlaceHolderContentProps) => 
           </TooltipAcre>
         </div>
       )}
-      {/* <Card className={cn('rounded-lg border-none', pathBack ? 'mt-2' : 'mt-6')}>
-        <CardContent className='p-6'> */}
       <div className='mt-6'>
         <div className='flex flex-col w-full relative'>{children}</div>
       </div>
-      {/* </CardContent>
-      </Card> */}
     </div>
   )
 }

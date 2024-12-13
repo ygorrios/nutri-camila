@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import PlaceholderContent from 'src/components/default-page'
 import { Button } from 'src/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from 'src/components/ui/form'
 import { Input } from 'src/components/ui/input'
@@ -29,18 +30,17 @@ const CreatePage: NextPage<Props> = ({}) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      debugger
       const response = await axios.post('/api/courses', values)
       toast.success('Curso criado com sucesso.')
-      router.push(`/app/teacher/courses/${response.data.id}`)
-      router.refresh()
+      // router.push(`/app/teacher/courses/${response.data.id}`)
+      // router.refresh()
     } catch {
       toast.error('Ocorreu um erro ao criar o curso.')
     }
   }
 
   return (
-    <div className='max-w-5xl mx-auto flex md:items-center justify-center h-full p-6'>
+    <PlaceholderContent pathBack='/app/teacher/courses'>
       <div>
         <h1 className='text-2xl'>Nome do curso</h1>
         <p className='text-sm text-slate-600'>
@@ -75,7 +75,7 @@ const CreatePage: NextPage<Props> = ({}) => {
           </form>
         </Form>
       </div>
-    </div>
+    </PlaceholderContent>
   )
 }
 

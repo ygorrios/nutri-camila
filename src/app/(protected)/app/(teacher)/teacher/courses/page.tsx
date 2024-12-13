@@ -7,18 +7,6 @@ import { DataTable } from './_components/data-table'
 
 interface Props {}
 
-async function getData(): Promise<any> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: '728ed52f',
-      amount: 100,
-      status: 'pending',
-      email: 'm@example.com',
-    },
-    // ...
-  ]
-}
 const CoursesPage: NextPage<Props> = async ({}) => {
   const { userId } = await auth()
   if (!userId) redirect('/')

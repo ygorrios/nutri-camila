@@ -6,6 +6,7 @@ import { isTeacherServer } from 'src/lib/teacher'
 export async function POST(req: Request) {
   try {
     debugger
+    console.log('entrou')
     const { userId } = await auth()
     const { title } = await req.json()
     const isTeacher = await isTeacherServer(userId)

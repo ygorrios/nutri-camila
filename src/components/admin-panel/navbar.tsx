@@ -15,15 +15,6 @@ const Navbar = async ({ isTeacherPage }: NavbarProps) => {
   const { userId } = await auth()
   const isTeacher = await isTeacherServer(userId)
 
-  // const { session } = useSession()
-  // const isTeacher = hasRolePermissionBySession(session, TEACHER_ROLE)
-
-  // const pathname = usePathname()
-
-  // const isTeacherPage = pathname?.startsWith('/app/teacher')
-  // const isCoursePage = pathname?.includes('/app/courses')
-  // const isSearchPage = pathname === '/app/'
-
   return (
     <header
       className={cn(
@@ -33,10 +24,12 @@ const Navbar = async ({ isTeacherPage }: NavbarProps) => {
       )}
     >
       <div className='mx-4 sm:mx-8 flex h-14 items-center'>
-        <div className='flex items-center space-x-4 lg:space-x-0'>
-          <SheetMenu />
-          {/* <h1 className='font-bold'>{title}</h1> */}
-        </div>
+        {isTeacherPage && (
+          <div className='flex items-center space-x-4 lg:space-x-0'>
+            <SheetMenu />
+            {/* <h1 className='font-bold'>{title}</h1> */}
+          </div>
+        )}
         <div className='flex flex-1 items-center justify-start'>
           {/* {isCoursePage && !isTeacherPage && (
             <div className='flex gap-x-2'>

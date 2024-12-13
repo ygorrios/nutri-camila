@@ -8,7 +8,13 @@ const SignOutClient = (props: React.ComponentPropsWithRef<typeof Button>) => {
   const { signOut } = useClerk()
 
   return (
-    <Button variant='ghost' size='sm' {...props} onClick={() => signOut({ redirectUrl: '/' })}>
+    <Button
+      variant='ghost'
+      className='cursor-pointer'
+      size='sm'
+      {...props}
+      onClick={() => signOut({ redirectUrl: '/' })}
+    >
       <LogOut className='w-4 h-4 mr-3 text-muted-foreground' />
       Logout
     </Button>
