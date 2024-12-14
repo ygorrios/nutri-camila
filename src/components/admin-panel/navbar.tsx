@@ -57,9 +57,6 @@ const Navbar = async ({ isTeacherPage }: NavbarProps) => {
               </Button>
             </Link>
           ) : null}
-          {/* <SignedIn>
-            <UserButton />
-          </SignedIn> */}
           <UserNav />
         </div>
       </div>

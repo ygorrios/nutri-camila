@@ -1,4 +1,4 @@
-import { KeyRound, LucideIcon } from 'lucide-react'
+import { LucideIcon, Notebook } from 'lucide-react'
 
 type Submenu = {
   href: string
@@ -24,15 +24,15 @@ type Group = {
 const getMenuList = (pathname: string): Group[] => {
   return [
     {
-      groupLabel: 'Acre Intranet',
+      groupLabel: '',
       requiredAdmin: false,
       menus: [
         {
-          href: '/app',
-          label: 'Secret Manager',
-          active: pathname === '/app/',
+          href: '/app/teacher/courses/',
+          label: 'Cursos',
+          active: pathname === '/app/teacher/courses/',
           requiredAdmin: false,
-          icon: KeyRound,
+          icon: Notebook,
           submenus: [],
         },
       ],

@@ -16,10 +16,10 @@ const PlaceholderContent = ({ children, pathBack }: PlaceHolderContentProps) => 
     <div>
       {pathBack && (
         <div className='flex-col justify-center pt-2'>
-          <TooltipAcre text='Back'>
+          <TooltipAcre text='Voltar'>
             <Button className='h-8' variant='ghost' size='icon' onClick={() => router.push(pathBack)}>
               <ArrowLeft className='w-4 h-4' />
-              <span className='sr-only'>Back</span>
+              <span className='sr-only'>Voltar</span>
             </Button>
           </TooltipAcre>
         </div>

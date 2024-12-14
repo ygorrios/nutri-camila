@@ -1,6 +1,5 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
-import axios from 'axios'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -10,6 +9,7 @@ import PlaceholderContent from 'src/components/default-page'
 import { Button } from 'src/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from 'src/components/ui/form'
 import { Input } from 'src/components/ui/input'
+import api from 'src/services/api2'
 import * as z from 'zod'
 interface Props {}
 
@@ -30,7 +30,7 @@ const CreatePage: NextPage<Props> = ({}) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post('/api/courses', values)
+      const response = await api.post('/api/courses', values)
       toast.success('Curso criado com sucesso.')
       // router.push(`/app/teacher/courses/${response.data.id}`)
       // router.refresh()
