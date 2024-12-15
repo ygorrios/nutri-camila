@@ -1,8 +1,8 @@
 'use client'
-import { BarChart, Compass, Layout, List } from 'lucide-react'
+import { BarChart, Compass, List } from 'lucide-react'
 import { NextPage } from 'next'
-import SidebarItem from './sidebar-item'
 import { usePathname } from 'next/navigation'
+import SidebarItem from './sidebar-item'
 
 interface Props {}
 
@@ -18,12 +18,12 @@ const teacherRoutes = [
   {
     icon: List,
     label: 'Courses',
-    href: '/app/teacher/courses',
+    href: '/app/professor/cursos',
   },
   {
     icon: BarChart,
     label: 'Analytics',
-    href: '/app/teacher/analytics',
+    href: '/app/professor/analytics',
   },
 ]
 

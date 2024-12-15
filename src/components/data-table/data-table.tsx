@@ -12,7 +12,7 @@ import {
   VisibilityState,
 } from '@tanstack/react-table'
 import { CSSProperties, useState } from 'react'
-import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from 'src/components/ui/table'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'src/components/ui/table'
 
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react'
 import { Button } from 'src/components/ui/button'
@@ -123,30 +123,15 @@ const DataTable = <TData, TValue>({
               </TableRow>
             )}
           </TableBody>
-          <TableFooter>
-            {table.getFooterGroups().map((footerGroup) => {
-              return (
-                <TableRow key={footerGroup.id}>
-                  {footerGroup.headers.map((footer) => {
-                    return (
-                      <TableCell key={footer.id} colSpan={footer.colSpan}>
-                        {flexRender(footer.column.columnDef.footer, footer.getContext())}
-                      </TableCell>
-                    )
-                  })}
-                </TableRow>
-              )
-            })}
-          </TableFooter>
         </Table>
       </div>
       <div className='flex items-center justify-end space-x-2 py-4 px-4'>
         <div className='flex-1 text-sm text-muted-foreground'>
-          {`${table.getState().pagination.pageIndex * table.getState().pagination.pageSize} of ${table.getFilteredRowModel().rows.length} row(s) selected.`}
+          {`${table.getState().pagination.pageIndex * table.getState().pagination.pageSize} à ${table.getFilteredRowModel().rows.length} registros.`}
         </div>
         <div className='flex items-center space-x-6 lg:space-x-8'>
           <div className='flex items-center space-x-2'>
-            <p className='text-sm font-medium'>Rows</p>
+            <p className='text-sm font-medium'>Linhas</p>
             <Select
               value={`${table.getState().pagination.pageSize}`}
               onValueChange={(value) => {
@@ -173,7 +158,7 @@ const DataTable = <TData, TValue>({
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
-            <span className='sr-only'>Go to first page</span>
+            <span className='sr-only'>Primeira página</span>
             <ChevronsLeft className='h-4 w-4' />
           </Button>
           <Button
@@ -182,7 +167,7 @@ const DataTable = <TData, TValue>({
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            <span className='sr-only'>Go to previous page</span>
+            <span className='sr-only'>Página anterior</span>
             <ChevronLeft className='h-4 w-4' />
           </Button>
           <Button
@@ -191,7 +176,7 @@ const DataTable = <TData, TValue>({
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            <span className='sr-only'>Go to next page</span>
+            <span className='sr-only'>Próxima página</span>
             <ChevronRight className='h-4 w-4' />
           </Button>
           <Button
@@ -200,7 +185,7 @@ const DataTable = <TData, TValue>({
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
-            <span className='sr-only'>Go to last page</span>
+            <span className='sr-only'>Última página</span>
             <ChevronsRight className='h-4 w-4' />
           </Button>
         </div>

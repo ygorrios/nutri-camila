@@ -6,7 +6,7 @@ import { cn } from 'src/lib/utils'
 const backgroundVariants = cva('rounded-full flex items-center justify-center', {
   variants: {
     variant: {
-      default: 'bg-sky-100',
+      default: '',
       success: 'bg-emerald-100',
     },
     size: {
@@ -23,7 +23,7 @@ const backgroundVariants = cva('rounded-full flex items-center justify-center', 
 const iconVariants = cva('', {
   variants: {
     variant: {
-      default: 'text-sky-700',
+      default: 'text-primary',
       success: 'text-emerald-700',
     },
     size: {

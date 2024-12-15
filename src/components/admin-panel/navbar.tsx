@@ -51,7 +51,7 @@ const Navbar = async ({ isTeacherPage }: NavbarProps) => {
               </Button>
             </Link>
           ) : isTeacher ? (
-            <Link href='/app/teacher/courses'>
+            <Link href='/app/professor/cursos'>
               <Button size='sm' variant='ghost'>
                 Entrar no Portal
               </Button>

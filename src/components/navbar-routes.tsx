@@ -1,6 +1,6 @@
 'use client'
 
-import { UserButton, useSession } from '@clerk/nextjs'
+import { useSession } from '@clerk/nextjs'
 import { ArrowLeft, LogOut } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -16,9 +16,8 @@ export const NavbarRoutes = () => {
 
   const pathname = usePathname()
 
-  const isTeacherPage = pathname?.startsWith('/app/teacher')
-  const isCoursePage = pathname?.includes('/app/courses')
-  const isSearchPage = pathname === '/app/'
+  const isTeacherPage = pathname?.startsWith('/app/professor')
+  const isCoursePage = pathname?.includes('/app/cursos')
 
   return (
     <>
@@ -37,13 +36,13 @@ export const NavbarRoutes = () => {
           <Link href='/app'>
             <Button size='sm' variant='ghost'>
               <LogOut className='h-4 w-4 mr-2' />
-              Sair Portal
+              Sair do Portal
             </Button>
           </Link>
         ) : isTeacher ? (
-          <Link href='/app/teacher/courses'>
+          <Link href='/app/professor/cursos'>
             <Button size='sm' variant='ghost'>
-              Entrar Portal
+              Entrar no Portal
             </Button>
           </Link>
         ) : null}

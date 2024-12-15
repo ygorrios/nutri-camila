@@ -21,10 +21,10 @@ const Sidebar = () => {
         <Link href='/app/' className='flex gap-2 justify-center mb-2'>
           <div
             className={cn(
-              'flex font-bold text-lg whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300 translate-x-0 opacity-100 py-2',
+              'flex font-bold text-lg whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300 translate-x-0 opacity-100 ',
             )}
           >
-            <Logo width={100} />
+            <Logo width={80} />
           </div>
         </Link>
         <Menu isOpen={sidebar?.isOpen} />

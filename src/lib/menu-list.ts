@@ -1,4 +1,4 @@
-import { LucideIcon, Notebook } from 'lucide-react'
+import { ChartBarStacked, LucideIcon, Notebook } from 'lucide-react'
 
 type Submenu = {
   href: string
@@ -28,11 +28,19 @@ const getMenuList = (pathname: string): Group[] => {
       requiredAdmin: false,
       menus: [
         {
-          href: '/app/teacher/courses/',
+          href: '/app/professor/cursos/',
           label: 'Cursos',
-          active: pathname === '/app/teacher/courses/',
+          active: pathname.includes('/app/professor/cursos/'),
           requiredAdmin: false,
           icon: Notebook,
+          submenus: [],
+        },
+        {
+          href: '/app/professor/categorias/',
+          label: 'Categorias',
+          active: pathname.includes('/app/professor/categorias/'),
+          requiredAdmin: false,
+          icon: ChartBarStacked,
           submenus: [],
         },
       ],

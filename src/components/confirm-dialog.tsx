@@ -9,26 +9,23 @@ import {
   AlertDialogTitle,
 } from 'src/components/ui/alert-dialog'
 
-interface AcreIntranetIpFormProps {
+interface ConfirmDialogProps {
   isOpenConfirmDialog: boolean
   onOpenChangeConfirmDialog: (value: boolean) => void
   onSuccessFn: () => void
 }
 
-const ConfirmDialog = ({ isOpenConfirmDialog, onOpenChangeConfirmDialog, onSuccessFn }: AcreIntranetIpFormProps) => {
+const ConfirmDialog = ({ isOpenConfirmDialog, onOpenChangeConfirmDialog, onSuccessFn }: ConfirmDialogProps) => {
   return (
     <AlertDialog open={isOpenConfirmDialog} onOpenChange={onOpenChangeConfirmDialog}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your account and remove your data from our
-            servers.
-          </AlertDialogDescription>
+          <AlertDialogTitle>Você realmente tem certeza?</AlertDialogTitle>
+          <AlertDialogDescription>Isso não pode ser desfeito</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogAction onClick={onSuccessFn}>Continuar</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
