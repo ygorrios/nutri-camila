@@ -19,7 +19,7 @@ export default clerkMiddleware(async (auth, request) => {
     return NextResponse.redirect(new URL('/app', request.nextUrl))
   } else if (!isPublic && !userId && !isHomePage) {
     await auth.protect()
-  } else if (isPublic && userId) {
+  } else if (isPublic && userId || isHomePage && userId) {
     return NextResponse.redirect(new URL('/app', request.nextUrl))
   }
   return response

@@ -9,18 +9,18 @@ import DataTable from 'src/components/data-table/data-table'
 import { DebouncedInput } from 'src/components/debounce-input'
 import { Button } from 'src/components/ui/button'
 import axiosApi from 'src/services/api'
-import { getCourseColumns } from './course-columns'
+import { getCategoryColumns } from './category-columns'
 export type Clients = {
   clientName: string
   fieldName: string
   fieldData: string
 }
 
-interface CourseGridProps {
+interface CategoryGridProps {
   dataGrid: any
 }
 
-const CourseGrid = ({ dataGrid = [] }: CourseGridProps) => {
+const CategoryGrid = ({ dataGrid = [] }: CategoryGridProps) => {
   const [globalFilter, setGlobalFilter] = useState('')
   const [loading, setLoading] = useState(false)
   const { refresh } = useRouter()
@@ -28,7 +28,7 @@ const CourseGrid = ({ dataGrid = [] }: CourseGridProps) => {
   const onDelete = useCallback(async (id: string) => {
     try {
       setLoading(true)
-      await axiosApi.delete(`/api/cursos/${id}`)
+      await axiosApi.delete(`/api/categorias/${id}`)
       refresh()
       setInterval(() => {
         setLoading(false)
@@ -39,18 +39,18 @@ const CourseGrid = ({ dataGrid = [] }: CourseGridProps) => {
     }
   }, [])
 
-  const columnsDt = useMemo(() => getCourseColumns({ onDelete }), [])
+  const columnsDt = useMemo(() => getCategoryColumns({ onDelete }), [])
 
   return (
     <div className='w-full'>
       <div className='flex space-between items-center py-4 gap-x-5'>
         <DebouncedInput
-          placeholder='Pesquisar Cursos...'
+          placeholder='Pesquisar Categorias...'
           value={globalFilter ?? ''}
           onChange={(value) => setGlobalFilter(String(value))}
           className='max-w-sm'
         />
-        <Link href='/app/professor/cursos/criar' className='ml-auto'>
+        <Link href='/app/professor/categorias/criar' className='ml-auto'>
           <Button>
             <span className='sr-only'>Add</span>
             <PlusIcon className='w-4 h-4' />
@@ -69,4 +69,4 @@ const CourseGrid = ({ dataGrid = [] }: CourseGridProps) => {
   )
 }
 
-export { CourseGrid }
+export { CategoryGrid }

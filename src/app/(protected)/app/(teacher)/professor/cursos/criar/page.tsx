@@ -75,7 +75,7 @@ const CreatePage: NextPage<Props> = ({}) => {
               )}
             />
             <div className='flex items-center gap-x-2'>
-              <Link href='/app/professor/cursos'>
+              <Link href='/app/professor/cursos' className='ml-auto'>
                 <Button type='button' variant='ghost'>
                   Cancelar
                 </Button>

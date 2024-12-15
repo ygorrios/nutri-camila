@@ -4,11 +4,10 @@ import DataTableColumnHeader from 'src/components/data-table/data-table-column-h
 import DataTableRowActions from 'src/components/data-table/data-table-row-actions'
 import { Badge } from 'src/components/ui/badge'
 import { cn } from 'src/lib/utils'
-import { AcreIntranetIp } from 'src/types/Whitelist.types'
 
 interface CourseColumnsProps {
-  onEdit: (acreIntranetIp: AcreIntranetIp) => void
-  onDelete: (acreIntranetIp: AcreIntranetIp) => void
+  onEdit: () => void
+  onDelete: () => void
 }
 
 const getCourseColumns = ({ onEdit, onDelete }: CourseColumnsProps): ColumnDef<Course>[] => [

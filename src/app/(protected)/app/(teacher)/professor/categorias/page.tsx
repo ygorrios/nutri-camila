@@ -3,8 +3,7 @@ import { NextPage } from 'next'
 import { redirect } from 'next/navigation'
 import PlaceholderContent from 'src/components/default-page'
 import { db } from 'src/lib/db'
-import { columns } from './_components/columns'
-import { DataTable } from './_components/data-table'
+import { CategoryGrid } from './_components/category-grid'
 
 interface Props {}
 
@@ -18,7 +17,7 @@ const CoursesPage: NextPage<Props> = async ({}) => {
   })
   return (
     <PlaceholderContent>
-      <DataTable columns={columns} data={categories} />
+      <CategoryGrid dataGrid={categories} />
     </PlaceholderContent>
   )
 }
