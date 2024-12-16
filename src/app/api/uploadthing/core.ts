@@ -2,7 +2,7 @@ import { auth } from '@clerk/nextjs/server'
 import { isTeacherServer } from 'src/lib/teacher'
 import { createUploadthing, type FileRouter } from 'uploadthing/next'
 
-const f = createUploadthing()
+const uploadthing = createUploadthing()
 
 const handleAuth = async () => {
   const { userId } = await auth()
@@ -11,21 +11,29 @@ const handleAuth = async () => {
   return { userId }
 }
 
+const handleUploadComplete = ({ metadata, file }: { metadata: any; file: any }) => {
+  // This code RUNS ON YOUR SERVER after upload
+  console.log('Upload complete for userId:', metadata.userId)
+  console.log('file url', file.url)
+  // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+  return { uploadedBy: metadata.userId }
+}
+
 export const ourFileRouter = {
-  courseImage: f({
+  courseImage: uploadthing({
     image: {
       maxFileSize: '4MB',
       maxFileCount: 1,
     },
   })
     .middleware(() => handleAuth())
-    .onUploadComplete(() => {}),
-  courseAttachment: f(['text', 'image', 'video', 'audio', 'pdf'])
+    .onUploadComplete((params) => handleUploadComplete(params)),
+  courseAttachment: uploadthing(['text', 'image', 'video', 'audio', 'pdf'])
     .middleware(() => handleAuth())
-    .onUploadComplete(() => {}),
-  chapterVideo: f({ video: { maxFileSize: '512GB', maxFileCount: 1 } })
+    .onUploadComplete((params) => handleUploadComplete(params)),
+  chapterVideo: uploadthing({ video: { maxFileSize: '512GB', maxFileCount: 1 } })
     .middleware(() => handleAuth())
-    .onUploadComplete(() => {}),
+    .onUploadComplete((params) => handleUploadComplete(params)),
 } satisfies FileRouter
 
 export type OurFileRouter = typeof ourFileRouter

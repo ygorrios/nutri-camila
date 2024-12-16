@@ -2,7 +2,8 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { isTeacherServer } from './lib/teacher'
 
-const isPublicRoutes = createRouteMatcher(['/sign-in', '/sign-up', '/api/uploadthing(.*)'])
+const isPublicRoutes = createRouteMatcher(['/api/uploadthing(.*)'])
+const isAuthRoutes = createRouteMatcher(['/sign-in', '/sign-up'])
 
 export default clerkMiddleware(async (auth, request) => {
   const { userId } = await auth()
@@ -13,13 +14,14 @@ export default clerkMiddleware(async (auth, request) => {
   // console.log('isTeacherPage', isTeacherPage)
   const response = NextResponse.next()
   const isPublic = isPublicRoutes(request)
+  const isAuth = isAuthRoutes(request)
   const isHomePage = request.nextUrl.pathname === '/'
 
   if (!isTeacher && isTeacherPage) {
     return NextResponse.redirect(new URL('/app', request.nextUrl))
-  } else if (!isPublic && !userId && !isHomePage) {
+  } else if (!isAuth && !userId && !isHomePage) {
     await auth.protect()
-  } else if (isPublic && userId || isHomePage && userId) {
+  } else if ((isAuth && userId) || (isHomePage && userId)) {
     return NextResponse.redirect(new URL('/app', request.nextUrl))
   }
   return response
