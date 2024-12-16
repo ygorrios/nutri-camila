@@ -6,6 +6,7 @@ import { Button } from 'src/components/ui/button'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from 'src/components/ui/command'
 import { Popover, PopoverContent, PopoverTrigger } from 'src/components/ui/popover'
 import { cn } from 'src/lib/utils'
+import { ComboboxOptionType } from 'src/types/ComboBox.types'
 import { useDebouncedCallback } from 'use-debounce'
 import { TooltipAcre } from './tooltip-acre'
 

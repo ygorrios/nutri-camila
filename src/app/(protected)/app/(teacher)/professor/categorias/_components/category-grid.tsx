@@ -8,7 +8,7 @@ import { useCallback, useMemo, useState } from 'react'
 import DataTable from 'src/components/data-table/data-table'
 import { DebouncedInput } from 'src/components/debounce-input'
 import { Button } from 'src/components/ui/button'
-import axiosApi from 'src/services/api'
+import api from 'src/services/axiosApi'
 import { getCategoryColumns } from './category-columns'
 export type Clients = {
   clientName: string
@@ -28,7 +28,7 @@ const CategoryGrid = ({ dataGrid = [] }: CategoryGridProps) => {
   const onDelete = useCallback(async (id: string) => {
     try {
       setLoading(true)
-      await axiosApi.delete(`/api/categorias/${id}`)
+      await api.delete(`/api/categorias/${id}`)
       refresh()
       setInterval(() => {
         setLoading(false)

@@ -2,7 +2,10 @@ import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { db } from 'src/lib/db'
 
-export async function DELETE(req: Request, { params }: { params: { courseId: string; attachmentId: string } }) {
+export async function DELETE(
+  req: Request,
+  { params }: { params: Promise<{ courseId: string; attachmentId: string }> },
+) {
   try {
     const paramsResult = await params
     const { userId } = await auth()

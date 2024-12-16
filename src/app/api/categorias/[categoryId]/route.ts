@@ -2,7 +2,7 @@ import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { db } from 'src/lib/db'
 
-export async function PUT(req: Request, { params }: { params: { categoryId: string } }) {
+export async function PUT(req: Request, { params }: { params: Promise<{ categoryId: string }> }) {
   try {
     const paramsResult = await params
     const { userId } = await auth()
@@ -32,7 +32,7 @@ export async function PUT(req: Request, { params }: { params: { categoryId: stri
   }
 }
 
-export async function DELETE(req: Request, { params }: { params: { categoryId: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ categoryId: string }> }) {
   try {
     const paramsResult = await params
     const { userId } = await auth()

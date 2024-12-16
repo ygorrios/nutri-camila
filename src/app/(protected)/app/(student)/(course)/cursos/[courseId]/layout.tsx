@@ -7,7 +7,13 @@ import { auth } from '@clerk/nextjs/server'
 import { CourseNavbar } from './_components/course-navbar'
 import { CourseSidebar } from './_components/course-sidebar'
 
-const CourseLayout = async ({ children, params }: { children: React.ReactNode; params: { courseId: string } }) => {
+const CourseLayout = async ({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Promise<{ courseId: string }>
+}) => {
   const paramsResult = await params
   const { userId } = await auth()
 

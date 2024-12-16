@@ -8,7 +8,7 @@ const { video } = new Mux({
   tokenSecret: process.env.MUX_TOKEN_SECRET,
 })
 
-export async function DELETE(req: Request, { params }: { params: { courseId: string; chapterId: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ courseId: string; chapterId: string }> }) {
   try {
     const paramsResult = await params
     const { userId } = await auth()
@@ -81,7 +81,7 @@ export async function DELETE(req: Request, { params }: { params: { courseId: str
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { courseId: string; chapterId: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ courseId: string; chapterId: string }> }) {
   try {
     const paramsResult = await params
     const { userId } = await auth()

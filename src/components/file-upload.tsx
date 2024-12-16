@@ -14,7 +14,9 @@ const FileUpload: NextPage<Props> = ({ endpoint, onChange }) => {
     <UploadDropzone
       endpoint={endpoint}
       onClientUploadComplete={(res) => onChange(res?.[0]?.url)}
-      onUploadError={(error: Error) => toast.error(error?.message)}
+      onUploadError={(error: Error) => {
+        toast.error(error?.message)
+      }}
     />
   )
 }

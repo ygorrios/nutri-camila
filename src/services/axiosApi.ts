@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const axiosApi = axios.create({})
+const api = axios.create({})
 
-axiosApi.interceptors.response.use(
+api.interceptors.response.use(
   (response) => {
     // if (response.status === 200) return response.data
     return response
@@ -15,4 +15,4 @@ axiosApi.interceptors.response.use(
   },
 )
 
-export default axiosApi
+export default api

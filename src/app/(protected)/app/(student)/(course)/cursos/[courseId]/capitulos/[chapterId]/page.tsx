@@ -11,7 +11,7 @@ import { CourseEnrollButton } from './_components/course-enroll-button'
 import { CourseProgressButton } from './_components/course-progress-button'
 import { VideoPlayer } from './_components/video-player'
 
-const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId: string } }) => {
+const ChapterIdPage = async ({ params }: { params: Promise<{ courseId: string; chapterId: string }> }) => {
   const paramsResult = await params
   const { userId } = await auth()
 

@@ -3,18 +3,18 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { getCourses } from 'src/actions/get-courses'
+import { Navbar } from 'src/components/admin-panel/navbar'
 import { Logo } from 'src/components/logo'
 import { SearchInput } from 'src/components/search-input'
 import { db } from 'src/lib/db'
 import { Categories } from './_components/categories'
 import CoursesList from './_components/courses-list'
-import { Navbar } from 'src/components/admin-panel/navbar'
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     title: string
     categoryId: string
-  }
+  }>
 }
 
 const SearchPage: NextPage<Props> = async ({ searchParams }) => {

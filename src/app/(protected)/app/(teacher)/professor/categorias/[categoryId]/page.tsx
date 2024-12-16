@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import { db } from 'src/lib/db'
 import FormPage from '../_components/form'
 interface Props {
-  params: { categoryId: string }
+  params: Promise<{ categoryId: string }>
 }
 
 const EditPage: NextPage<Props> = async ({ params }) => {

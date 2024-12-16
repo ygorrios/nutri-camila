@@ -16,7 +16,7 @@ import PriceForm from './_components/price-form'
 import TitleForm from './_components/title-form'
 
 interface Props {
-  params: { courseId: string }
+  params: Promise<{ courseId: string }>
 }
 
 const CourseIdPage: NextPage<Props> = async ({ params }) => {

@@ -6,8 +6,8 @@ const CourseIdPage = async ({
   params,
   searchParams,
 }: {
-  params: { courseId: string }
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+  params: Promise<{ courseId: string }>
+  searchParams: Promise<{ success: string }>
 }) => {
   const paramsResult = await params
   const searchParamsResult = await searchParams

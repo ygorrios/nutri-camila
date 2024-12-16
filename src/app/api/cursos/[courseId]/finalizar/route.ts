@@ -5,7 +5,7 @@ import { currentUser } from '@clerk/nextjs/server'
 import { db } from 'src/lib/db'
 import { stripe } from 'src/lib/stripe'
 
-export async function POST(req: Request, { params }: { params: { courseId: string } }) {
+export async function POST(req: Request, { params }: { params: Promise<{ courseId: string }> }) {
   try {
     const paramsResult = await params
     const user = await currentUser()

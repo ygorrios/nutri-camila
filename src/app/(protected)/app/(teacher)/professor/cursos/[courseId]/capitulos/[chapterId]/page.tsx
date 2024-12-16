@@ -12,10 +12,10 @@ import ChapterTitleForm from './_components/chapter-title-form'
 import ChapterVideoForm from './_components/chapter-video-form'
 
 export interface IChapterIdPageProps {
-  params: {
+  params: Promise<{
     courseId: string
     chapterId: string
-  }
+  }>
 }
 
 export default async function ChapterIdPage({ params }: IChapterIdPageProps) {

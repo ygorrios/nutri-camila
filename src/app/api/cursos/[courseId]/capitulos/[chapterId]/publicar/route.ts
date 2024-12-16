@@ -2,7 +2,7 @@ import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { db } from 'src/lib/db'
 
-export async function PATCH(req: Request, { params }: { params: { courseId: string; chapterId: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ courseId: string; chapterId: string }> }) {
   try {
     const paramsResult = await params
     const { userId } = await auth()

@@ -1,4 +1,3 @@
-import { Row } from '@tanstack/react-table'
 import { MoreHorizontal, Pencil, Trash } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -14,14 +13,19 @@ import {
 import { useToast } from 'src/hooks/use-toast'
 import { DeleteModal } from '../modals/delete-modal'
 
-interface DataTableRowActionsProps<TData> {
-  row: Row<TData>
-  onEdit?: (value: TData) => void
-  onDelete?: (value: TData) => void
+interface DataTableRowActionsProps<T> {
+  row: T
+  onEdit?: (id: string) => void
+  onDelete?: (id: string) => void
   onEditUrl?: string
 }
 
-const DataTableRowActions = <TData,>({ row, onEdit, onDelete, onEditUrl }: DataTableRowActionsProps<TData>) => {
+const DataTableRowActions = <T extends { original: { id: string } }>({
+  row,
+  onEdit,
+  onDelete,
+  onEditUrl,
+}: DataTableRowActionsProps<T>) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState(false)
   const { toast } = useToast()
@@ -61,7 +65,7 @@ const DataTableRowActions = <TData,>({ row, onEdit, onDelete, onEditUrl }: DataT
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
         {onEdit ? (
-          <DropdownMenuItem onClick={() => onEdit?.(row.original)}>
+          <DropdownMenuItem onClick={() => onEdit?.(row.original?.id)}>
             <Pencil className='mr-2 h-4 w-4' />
             Edit
           </DropdownMenuItem>

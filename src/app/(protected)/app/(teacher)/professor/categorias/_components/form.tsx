@@ -10,7 +10,7 @@ import { Button } from 'src/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from 'src/components/ui/form'
 import { Input } from 'src/components/ui/input'
 import { useToast } from 'src/hooks/use-toast'
-import axiosApi from 'src/services/api'
+import api from 'src/services/axiosApi'
 import * as z from 'zod'
 interface Props {
   id?: string
@@ -44,9 +44,9 @@ const FormPage: NextPage<Props> = ({ id, name }) => {
         ),
       })
       if (id) {
-        await axiosApi.put(`/api/categorias/${id}`, values)
+        await api.put(`/api/categorias/${id}`, values)
       } else {
-        await axiosApi.post('/api/categorias', values)
+        await api.post('/api/categorias', values)
       }
       router.push('/app/professor/categorias')
       router.refresh()

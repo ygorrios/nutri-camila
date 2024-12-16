@@ -6,8 +6,8 @@ import { Badge } from 'src/components/ui/badge'
 import { cn } from 'src/lib/utils'
 
 interface CourseColumnsProps {
-  onEdit: () => void
-  onDelete: () => void
+  onEdit?: (id: string) => void
+  onDelete: (id: string) => void
 }
 
 const getCourseColumns = ({ onEdit, onDelete }: CourseColumnsProps): ColumnDef<Course>[] => [

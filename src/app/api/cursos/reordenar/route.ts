@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import { auth } from '@clerk/nextjs/server'
 import { db } from 'src/lib/db'
 
-export async function PUT(req: Request, { params }: { params: { courseId: string } }) {
+export async function PUT(req: Request, { params }: { params: Promise<{ courseId: string }> }) {
   try {
     const paramsResult = await params
     const { userId } = await auth()

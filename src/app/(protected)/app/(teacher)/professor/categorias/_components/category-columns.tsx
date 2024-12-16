@@ -4,7 +4,7 @@ import DataTableColumnHeader from 'src/components/data-table/data-table-column-h
 import DataTableRowActions from 'src/components/data-table/data-table-row-actions'
 
 interface CategoryColumnsProps {
-  onEdit: () => void
+  onEdit?: (id: string) => void
   onDelete: (id: string) => void
 }
 

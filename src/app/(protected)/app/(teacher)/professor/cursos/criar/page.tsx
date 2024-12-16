@@ -10,7 +10,7 @@ import { Button } from 'src/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from 'src/components/ui/form'
 import { Input } from 'src/components/ui/input'
 import { useToast } from 'src/hooks/use-toast'
-import axiosApi from 'src/services/api'
+import api from 'src/services/axiosApi'
 import * as z from 'zod'
 interface Props {}
 
@@ -40,7 +40,7 @@ const CreatePage: NextPage<Props> = ({}) => {
           </div>
         ),
       })
-      const response = await axiosApi.post('/api/cursos', values)
+      const response = await api.post('/api/cursos', values)
       router.push(`/app/professor/cursos/${response.data.id}`)
       router.refresh()
     } catch {
